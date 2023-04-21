@@ -7,7 +7,9 @@ import path from 'path'
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(new URL('./public', import.meta.url).pathname)))
+app.use(
+  express.static(path.join(new URL('./public', import.meta.url).pathname))
+)
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -42,7 +44,9 @@ app.post('/api/upload', upload.single('photo'), (req, res) => {
 const port = process.env.PORT || 4000
 
 app.get('/', (req, res) => {
-
+  console.log('Listening server')
+  debugger
+  res.send('hello world')
 })
 
 app.listen(port, (e) => {
